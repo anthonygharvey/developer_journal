@@ -22,6 +22,12 @@ Features TODO
 - [x] Add date_created attribute to Entry
 - [x] Add start_date to Goal
 - [x] Refactor valid_signup? helper method to check for unique username and email address prior to creating a new user.
+- [ ] '/entries' should show all of the entries for the current_user in a condensed form.
+	- [ ] show an edit and delete tag at the bottom
+		- [ ] edit link should go to '/entries/edit' and display the edit form
+		- [ ] delete link should open a modal and ask the user to confirm if they want to delete the entry (and that it cannot be undone if they delete it)
+	- [ ] the title should be a link to the full view '/entries/show'
+- [ ] '/entries/show' should show a particular entry in full form.
 
 
 
@@ -30,3 +36,11 @@ General TODO
 
 TODO: Update favicon
 TODO: Add rack-flash3 gem for messages (error, success, etc.) and style with Bootstrap
+
+
+---
+Future Features
+- [ ] Instead of deleting an entry upon a user's confirmation, move it to a 'deleted' table
+	- [ ] save the entry and its corresponding goal and user
+- [ ] Add the ability to tweet an entry
+	
