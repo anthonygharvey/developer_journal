@@ -28,3 +28,4 @@ Features TODO
 General TODO
 
 TODO: Update favicon
+TODO: Add rack-flash3 gem for messages (error, success, etc.) and style with Bootstrap
