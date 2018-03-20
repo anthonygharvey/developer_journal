@@ -18,6 +18,7 @@
 
 TODO
 - [x] Add first and last name attributes to User
-- [ ] Add name attribute to Goal
+- [x] Add name attribute to Goal
 - [x] Add date_created attribute to Entry
+- [ ] Add start_date to Goal
 
