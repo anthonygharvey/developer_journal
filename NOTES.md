@@ -1,9 +1,9 @@
 ## Models
-|Model		|Attributes									|
-|---------|:-------------------------:|
-|Users		|username, email, password	|
-|Goals		|duration, language(s)			|
-|Entries	|content, language(s)				|
+|Model		|Attributes										|
+|---------|:---------------------------:|
+|Users		|username, email, password		|
+|Goals		|duration_in_days, language(s)|
+|Entries	|content, language(s)					|
 
 
 ## Relationships
