@@ -34,8 +34,15 @@ helpers do
     !params.any?{|i| i[1].empty?}
   end
 
+  def goal_exists?(goal_id)
+    Goal.find_by_id(goal_id) != nil
+  end
+
+  def entry_exists?(entry_id)
+    Entry.find_by_id(entry_id) != nil
+  end
+
 end
 #----------------------------------------------------------
-
 
 end
