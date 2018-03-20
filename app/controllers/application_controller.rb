@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def valid_signup?
-      !params.any?{|i| i[1].empty?}
+      !params.any?{|i| i[1].empty?} && !User.find_by_username(params[:username]) && !User.find_by_email(params[:email])
     end
 
     def goal_exists?(goal_id)

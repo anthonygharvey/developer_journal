@@ -21,6 +21,7 @@ Features TODO
 - [x] Add name attribute to Goal
 - [x] Add date_created attribute to Entry
 - [x] Add start_date to Goal
+- [x] Refactor valid_signup? helper method to check for unique username and email address prior to creating a new user.
 
 
 

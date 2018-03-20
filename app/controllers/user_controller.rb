@@ -9,6 +9,7 @@ class UserController < ApplicationController
 	end
 
 	post '/signup' do
+		binding.pry
 		if valid_signup?
 			@user = User.create(params)
 			session[:user_id] = @user.id
