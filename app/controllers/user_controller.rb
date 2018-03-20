@@ -49,8 +49,6 @@ class UserController < ApplicationController
 		else
 			erb :'/entries/entries'
 		end
-
-
 	end
 
 	get '/:userid/entries' do
@@ -73,8 +71,6 @@ class UserController < ApplicationController
 			redirect to "/"
 		end
 	end
-
-
 	#---------------------------------------------------------
 
 
