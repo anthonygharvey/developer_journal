@@ -28,7 +28,7 @@ Features TODO
 		- [ ] delete link should open a modal and ask the user to confirm if they want to delete the entry (and that it cannot be undone if they delete it)
 	- [ ] the title should be a link to the full view '/entries/show'
 - [ ] '/entries/show' should show a particular entry in full form.
-- [ ] include [md_simple_editor](https://github.com/rderoldan1/md_simple_editor) as the editor for creating a new entry!
+- [x] include [md_simple_editor](https://github.com/rderoldan1/md_simple_editor) as the editor for creating a new entry! (This will be implemented in a Rails version of the app)
 
 
 

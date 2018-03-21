@@ -1,2 +1,25 @@
 <h2>New Entry</h2>
 
+<form action='/entries' method='POST'>
+	<label for="name">Entry Title:</label>
+	<input type="text" name="name" id="name" class="form-control" placeholder="Entry Title">
+	<br>
+
+	<label for="users">Goal:</label>
+	<select name="goals" id="users" class="custom-select">
+		<option name="[goal_ids][]" value=""></option>
+		<% Goal.all.each do |goal| %>
+			<option name="[goal_ids][]" value="<%= goal.id %>"><%= goal.name %></option>
+		<% end %>
+	</select>
+	
+	<input type="text" name="new_goal" id="new_goal" class="form-control" placeholder="or create a new goal">
+	<br>
+
+	<div class="form-group">
+		<label for="entry_content">What did you learn today?</label>
+		<textarea class="form-control" id="exampleTextarea" rows="7"></textarea>
+	</div>
+
+	<input type="submit" id="submit" class="btn btn-primary">
+</form>

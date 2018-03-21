@@ -7,6 +7,10 @@ class EntryController < ApplicationController
 			redirect to "/login"
 		end
 	end
+
+	post '/entries' do
+		binding.pry
+	end
 	#--------------------------------------------------------
 
 
