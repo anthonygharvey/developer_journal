@@ -6,10 +6,10 @@
 	<br>
 
 	<label for="users">Goal:</label>
-	<select name="goals" id="users" class="custom-select">
+	<select name="goal_ids" id="users" class="custom-select">
 		<option name="[goal_ids][]" value=""></option>
 		<% Goal.all.each do |goal| %>
-			<option name="[goal_ids][]" value="<%= goal.id %>"><%= goal.name %></option>
+			<option name="[goal_ids][]" value="[<%= goal.id %>]"><%= goal.name %></option>
 		<% end %>
 	</select>
 	
@@ -18,7 +18,7 @@
 
 	<div class="form-group">
 		<label for="entry_content">What did you learn today?</label>
-		<textarea class="form-control" id="exampleTextarea" rows="7"></textarea>
+		<textarea name="content" class="form-control" id="exampleTextarea" rows="7"></textarea>
 	</div>
 
 	<input type="submit" id="submit" class="btn btn-primary">

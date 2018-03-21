@@ -10,6 +10,7 @@ class EntryController < ApplicationController
 
 	post '/entries' do
 		binding.pry
+		# TODO: uses the valid_entry? helper method.  Confirm if the validates_presence_of method that can be added to a model generates an error message.
 	end
 	#--------------------------------------------------------
 
