@@ -1,4 +1,12 @@
 <h2>Signup for Developer Journal</h2>
+<% if !!flash[:signup_error] %>
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<% flash[:signup_error].each do |message| %>
+			<span><%= message %>.  </span>
+		<% end %>
+	</div>
+<% end %>
 
 <div class="container">
 	<div class="row">
