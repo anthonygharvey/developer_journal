@@ -5,6 +5,11 @@
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <%= flash[:login] %>
   </div>
+<% elsif !!flash[:signup] %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:signup] %>
+  </div>
 <% end %>
 
 <div class="card mb-3">

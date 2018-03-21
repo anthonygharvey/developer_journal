@@ -9,10 +9,11 @@ class UserController < ApplicationController
 	end
 
 	post '/signup' do
-		binding.pry
+		# binding.pry
 		if valid_signup?
 			@user = User.create(params)
 			session[:user_id] = @user.id
+			flash[:signup] = "You've successfully signed up, #{@user.first_name}!"
 			redirect to "/entries"
 		else
 			redirect to "/signup"
