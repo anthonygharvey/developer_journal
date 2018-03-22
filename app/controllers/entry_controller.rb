@@ -9,9 +9,25 @@ class EntryController < ApplicationController
 	end
 
 	post '/entries' do
-		binding.pry
-		# TODO: uses the valid_entry? helper method.  Confirm if the validates_presence_of method that can be added to a model generates an error message.
+		@entry = current_user.entries.build(params)
+		if @entry.save
+			# binding.pry
+			flash[:new_entry] = "#{entry.title} saved!"
+			redirect to "/entries/:entry_id"
+		else
+			flash[:entry_error] = @entry.errors.full_messages
+			# binding.pry
+			flash[:unsaved_title] = @entry.title
+			flash[:unsaved_goal] = @entry.goal
+			flash[:unsaved_content] = @entry.content
+			redirect to "/entries/new"
+		end
 	end
+
+
+
+
+		# TODO: uses the valid_entry? helper method.  Confirm the validates_presence_of method that can be added to a model generates an error message.
 	#--------------------------------------------------------
 
 

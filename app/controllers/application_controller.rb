@@ -38,6 +38,10 @@ class ApplicationController < Sinatra::Base
       !params[:name].empty? && !params[:content].empty? && (!params[:goal_ids].empty? || !params[:new_goal].empty?)
     end
 
+    def valid_goal?
+      !(params[:goal] || params[:new_goal]).empty?
+    end
+
     def goal_exists?(goal_id)
       Goal.find_by_id(goal_id) != nil
     end

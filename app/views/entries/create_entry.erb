@@ -1,24 +1,45 @@
 <h2>New Entry</h2>
+<% if !!flash[:new_entry] %>
+	<div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:new_entry] %>
+  </div>	
+<% end %>
+
+<% if !!flash[:entry_error] %>
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<% flash[:entry_error].each do |message| %>
+			<span><%= message %>.  </span>
+		<% end %>
+	</div>
+<% end %>
+
 
 <form action='/entries' method='POST'>
-	<label for="name">Entry Title:</label>
-	<input type="text" name="name" id="name" class="form-control" placeholder="Entry Title">
+	<label for="title">Entry Title:</label>
+	<input type="text" name="title" id="title" class="form-control" placeholder="Entry Title">
 	<br>
 
-	<label for="users">Goal:</label>
-	<select name="goal_ids" id="users" class="custom-select">
-		<option name="[goal_ids][]" value=""></option>
+	<label for="goal">Goal:</label>
+	<select name="goal_id" id="goal" class="custom-select">
+		<option name="goal" value=""></option>
 		<% Goal.all.each do |goal| %>
-			<option name="[goal_ids][]" value="[<%= goal.id %>]"><%= goal.name %></option>
+			<option name="goal" value="<%= goal.id %>"><%= goal.name %></option>
 		<% end %>
 	</select>
+	<br>
 	
-	<input type="text" name="new_goal" id="new_goal" class="form-control" placeholder="or create a new goal">
+	<!-- <input type="text" name="new_goal" id="new_goal" class="form-control" placeholder="or create a new goal"> -->
 	<br>
 
 	<div class="form-group">
 		<label for="entry_content">What did you learn today?</label>
-		<textarea name="content" class="form-control" id="exampleTextarea" rows="7"></textarea>
+		<textarea name="content" class="form-control" id="exampleTextarea" rows="7">
+			<% if !!flash[:entry_error] %>
+				<%= flash[:unsaved_content] %>
+			<% end %>
+		</textarea>
 	</div>
 
 	<input type="submit" id="submit" class="btn btn-primary">
