@@ -1,3 +1,10 @@
+<% if !!flash[:edit_success] %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:edit_success] %>
+	</div>
+<% end %>
+
 <div class="card mb-3">
 	<div class="card-body">
 		<h3 class="card-title"><%= @entry.title %></h3>
