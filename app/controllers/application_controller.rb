@@ -15,7 +15,11 @@ class ApplicationController < Sinatra::Base
 
   #==================== INDEX ===============================
   get '/' do
-    erb :'index'
+    if logged_in?
+      erb :'/entries/entries'
+    else
+      erb :'index'
+    end
   end
   #----------------------------------------------------------
 
