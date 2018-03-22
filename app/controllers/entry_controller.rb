@@ -12,8 +12,7 @@ class EntryController < ApplicationController
 		@entry = current_user.entries.build(params)
 		if @entry.save
 			flash[:new_entry] = "#{@entry.title} saved!"
-			# TODO:	Build '/entries/:entry_id'
-			redirect to "/entries/:entry_id"
+			redirect to "/entries/#{@entry.id}"
 		else
 			flash[:entry_error] = @entry.errors.full_messages
 			flash[:unsaved_title] = @entry.title
@@ -24,5 +23,25 @@ class EntryController < ApplicationController
 	end
 	#--------------------------------------------------------
 
+
+	#==================== SHOW ==============================
+	get '/entries/:entryid' do
+		@entry = Entry.find(params[:entryid])
+		erb :'/entries/show'
+	end
+	#--------------------------------------------------------
+
+
+	#==================== EDIT ==============================
+	get '/entries/:entryid/edit' do
+		@entry = Entry.find(params[:entryid])
+		erb :'/entries/edit_entry'
+	end
+
+	patch '/entries/:entryid' do
+		Entry.find(params[:entryid]).update(params[:entry])
+		redirect to "/entries"
+	end
+	#--------------------------------------------------------
 
 end

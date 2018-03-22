@@ -1,0 +1,38 @@
+<!-- <div class="card mb-3">
+	<div class="card-body">
+		<h3 class="card-title"><%= @entry.title %></h3>
+		<h6 class="card-subtitle text-muted"><%= @entry.goal.name %></h6>
+	</div>
+	<div class="card-body">
+		<p class="card-text"><%= @entry.content %></p>
+	</div>
+	<div class="card-footer text-muted">
+		<%= @entry.created_at.strftime("%A, %B %d, %Y") %>
+	</div>
+</div> -->
+
+<form action='/entries/<%= @entry.id %>' method='POST'>
+	<input type="hidden" name="_method" id="hidden" value="PATCH">
+	<label for="title">Entry Title:</label>
+	<input type="text" name="entry[title]" id="title" class="form-control" placeholder="Entry Title" value="<%= @entry.title %>">
+	<br>
+
+	<label for="goal">Goal:</label>
+	<select name="goal_id" id="goal" class="custom-select">
+		<option name="goal" value=""></option>
+		<% current_user.goals.all.each do |goal| %>
+			<option name="entry[goal]" value="<%= goal.id %>" selected="<%= @entry.goal.id %>"><%= goal.name %></option>
+		<% end %>
+	</select>
+	<br>
+	<br>
+
+	<div class="form-group">
+		<label for="entry_content">What did you learn today?</label>
+		<textarea name="entry[content]" class="form-control" id="exampleTextarea" rows="7">
+			<%= @entry.content %>
+		</textarea>
+	</div>
+
+	<input type="submit" id="submit" value="Save" class="btn btn-primary">
+</form>

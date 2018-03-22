@@ -1,0 +1,15 @@
+<div class="card mb-3">
+	<div class="card-body">
+		<h3 class="card-title"><%= @entry.title %></h3>
+		<h6 class="card-subtitle text-muted"><%= @entry.goal.name %></h6>
+	</div>
+	<div class="card-body">
+		<p class="card-text"><%= @entry.content %></p>
+	</div>
+	<div class="card-footer text-muted">
+		<%= @entry.created_at.strftime("%A, %B %d, %Y") %>
+	</div>
+</div>
+
+<button type="button" class="btn btn-warning" onclick="window.location.href='/entries/<%= @entry.id %>/edit'">Edit</button>
+<button type="button" class="btn btn-danger" onclick="window.location.href='/entries/<%= @entry.id %>/delete'">Delete</button>
