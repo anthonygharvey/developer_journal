@@ -14,11 +14,15 @@
 <% current_user.entries.each do |entry| %>
   <div class="card mb-3">
     <div class="card-body">
-      <h3 class="card-title"><%= entry.title %></h3>
+      <h3 class="card-title"><a href="/entries/<%= entry.id %>"><%= entry.title %></a></h3>
       <h6 class="card-subtitle text-muted"><%= entry.goal.name %></h6>
     </div>
     <div class="card-body">
-      <p class="card-text"><%= entry.content %></p>
+      <p class="card-text"><%= entry.content[0..300] %>
+        <% if entry.content.length > 300 %>
+          <a href="/entries/<%= entry.id %>">read more...</a>
+        <% end %>
+      </p>
     </div>
     <div class="card-footer text-muted">
       <%= entry.created_at.strftime("%A, %B %d, %Y") %>
