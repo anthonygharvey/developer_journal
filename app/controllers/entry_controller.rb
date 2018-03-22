@@ -51,4 +51,14 @@ class EntryController < ApplicationController
 	end
 	#--------------------------------------------------------
 
+
+	#==================== DELETE ============================
+	delete '/entries/:entryid' do
+		entry = current_user.entries.find_by(params[:entryid])
+		flash[:delete_entry] = "#{entry.title} has been deleted"
+		entry.delete
+		redirect to "/entries"
+	end
+	#--------------------------------------------------------
+
 end

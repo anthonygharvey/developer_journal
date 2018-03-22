@@ -9,7 +9,13 @@
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <%= flash[:signup] %>
   </div>
+<% elsif !!flash[:delete_entry] %>
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <%= flash[:delete_entry] %>
+</div>
 <% end %>
+
 
 <% current_user.entries.each do |entry| %>
   <div class="card mb-3">
