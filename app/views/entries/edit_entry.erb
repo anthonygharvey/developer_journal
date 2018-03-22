@@ -1,15 +1,11 @@
-<!-- <div class="card mb-3">
-	<div class="card-body">
-		<h3 class="card-title"><%= @entry.title %></h3>
-		<h6 class="card-subtitle text-muted"><%= @entry.goal.name %></h6>
+<% if !!flash[:edit_error] %>
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<% flash[:edit_error].each do |message| %>
+			<span><%= message %>.  </span>
+		<% end %>
 	</div>
-	<div class="card-body">
-		<p class="card-text"><%= @entry.content %></p>
-	</div>
-	<div class="card-footer text-muted">
-		<%= @entry.created_at.strftime("%A, %B %d, %Y") %>
-	</div>
-</div> -->
+<% end %>
 
 <form action='/entries/<%= @entry.id %>' method='POST'>
 	<input type="hidden" name="_method" id="hidden" value="PATCH">
@@ -18,10 +14,10 @@
 	<br>
 
 	<label for="goal">Goal:</label>
-	<select name="goal_id" id="goal" class="custom-select">
+	<select name="entry[goal_id]" id="goal" class="custom-select">
 		<option name="goal" value=""></option>
 		<% current_user.goals.all.each do |goal| %>
-			<option name="entry[goal]" value="<%= goal.id %>" selected="<%= @entry.goal.id %>"><%= goal.name %></option>
+			<option name="goal" value="<%= goal.id %>" selected="<%= @entry.goal.id %>"><%= goal.name %></option>
 		<% end %>
 	</select>
 	<br>
@@ -34,5 +30,6 @@
 		</textarea>
 	</div>
 
+	<button type="button" class="btn btn-secondary" onclick="window.location.href='/entries/<%= @entry.id %>'">Cancel</button>
 	<input type="submit" id="submit" value="Save" class="btn btn-primary">
 </form>

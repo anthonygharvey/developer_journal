@@ -39,8 +39,15 @@ class EntryController < ApplicationController
 	end
 
 	patch '/entries/:entryid' do
-		Entry.find(params[:entryid]).update(params[:entry])
-		redirect to "/entries"
+		if !params[:entry][:goal_id] == ""
+			Entry.find(params[:entryid]).update(params[:entry])
+			redirect to "/entries"
+		else
+			@entry = Entry.find(params[:entryid])
+			@entry.update(params[:entry])
+			flash[:edit_error] = @entry.errors.full_messages
+			redirect to "/entries/#{params[:entryid]}/edit"
+		end
 	end
 	#--------------------------------------------------------
 
