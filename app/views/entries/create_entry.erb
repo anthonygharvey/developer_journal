@@ -24,13 +24,11 @@
 	<label for="goal">Goal:</label>
 	<select name="goal_id" id="goal" class="custom-select">
 		<option name="goal" value=""></option>
-		<% Goal.all.each do |goal| %>
+		<% current_user.goals.all.each do |goal| %>
 			<option name="goal" value="<%= goal.id %>"><%= goal.name %></option>
 		<% end %>
 	</select>
 	<br>
-	
-	<!-- <input type="text" name="new_goal" id="new_goal" class="form-control" placeholder="or create a new goal"> -->
 	<br>
 
 	<div class="form-group">
