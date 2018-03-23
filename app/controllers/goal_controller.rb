@@ -11,6 +11,7 @@ class GoalController < ApplicationController
 
 	post '/goals' do
 		@goal = current_user.goals.build(params[:goal])
+		@goal.start_date = Time.now
 		if @goal.save
 			flash[:new_goal] = "#{@goal.name} was saved!"
 			redirect to "/goals/#{@goal.id}"
