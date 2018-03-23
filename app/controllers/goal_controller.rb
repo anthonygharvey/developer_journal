@@ -26,6 +26,11 @@ class GoalController < ApplicationController
 
 
 	#==================== SHOW ==============================
+	get '/goals/:goalid' do
+		@goal = Goal.find(params[:goalid])
+		erb :'/goals/show'
+		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
+	end
 	#--------------------------------------------------------
 
 
