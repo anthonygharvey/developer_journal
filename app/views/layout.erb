@@ -36,8 +36,10 @@
               <a class="nav-link" href="/logout">Logout</a>
             </li>
           </ul>
-          <button type="button" class="btn btn-success" onclick="window.location.href='#'"> New Goal </button>
-          <button type="button" class="btn btn-info" onclick="window.location.href='/entries/new'">New Entry</button>
+          <% if logged_in? %>
+            <button type="button" class="btn btn-success" onclick="window.location.href='#'"> New Goal </button>
+            <button type="button" class="btn btn-info" onclick="window.location.href='/entries/new'">New Entry</button>
+          <% end %>
         </div>
       </nav>
       <br>
