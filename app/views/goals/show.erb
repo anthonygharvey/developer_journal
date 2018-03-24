@@ -70,11 +70,7 @@
 				<h6 class="card-subtitle text-muted"><%= entry.goal.name %></h6>
 			</div>
 			<div class="card-body">
-				<p class="card-text"><%= entry.content[0..300] %>
-					<% if entry.content.length > 300 %>
-						<a href="/entries/<%= entry.id %>">read more...</a>
-					<% end %>
-				</p>
+				<%= entry.content %>
 			</div>
 			<div class="card-footer text-muted">
 				<%= entry.created_at.strftime("%A, %B %d, %Y") %>
