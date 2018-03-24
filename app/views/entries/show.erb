@@ -8,7 +8,7 @@
 <div class="card mb-3">
 	<div class="card-body">
 		<h3 class="card-title"><%= @entry.title %></h3>
-		<h6 class="card-subtitle text-muted"><%= @entry.goal.name %></h6>
+		<h6 class="card-subtitle text-muted"><a href="/goals/<%= @entry.goal.id %>"><%= @entry.goal.name %></h6></a>
 	</div>
 	<div class="card-body">
 		<p class="card-text"><%= @entry.content %></p>

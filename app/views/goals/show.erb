@@ -1,8 +1,13 @@
 <div class="card mb-3">
 		<h3 class="card-header"><%= @goal.name %></h3>
 		<div class="card-body">
-			<h5 class="card-title">Created on: <%= @goal.start_date.strftime("%A, %B %d, %Y") %></h5>
+			<h5 class="card-title">Date Created: <%= @goal.start_date.strftime("%A, %B %d, %Y") %></h5>			
+			<h5 class="card-title">Target Date: <%= @goal.end_date.strftime("%A, %B %d, %Y") %></h5>			
 			<h5 class="card-title">Languages included: <%= @goal.languages %></h5>
+		</div>
+
+		<div class="progress" id="progress-box">
+			<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 		</div>
 
 		<div class="card-body">
@@ -46,24 +51,34 @@
 	
 
 
-<h2>Entries in this goal:</h2>
 
 
-<% current_user.entries.each do |entry| %>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h3 class="card-title"><a href="/entries/<%= entry.id %>"><%= entry.title %></a></h3>
-      <h6 class="card-subtitle text-muted"><%= entry.goal.name %></h6>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= entry.content[0..300] %>
-        <% if entry.content.length > 300 %>
-          <a href="/entries/<%= entry.id %>">read more...</a>
-        <% end %>
-      </p>
-    </div>
-    <div class="card-footer text-muted">
-      <%= entry.created_at.strftime("%A, %B %d, %Y") %>
-    </div>
-  </div>
+<% if @goal.entries.empty? %>
+	<blockquote class="blockquote">
+		<p class="mb-0">A journey of a thousand miles begins with a single <a href="/entries/new">step</a>.</p>
+		<footer class="blockquote-footer">Lao Tzu in <cite title="Source Title">Chinese proverb</cite></footer>
+	</blockquote>
+
+	<h5>Take that first step towards reaching your goal by creating an entry!</h5>
+	<button type="button" class="btn btn-success" onclick="window.location.href='/entries/new'">Start Here</button>
+<% else %>
+	<h2>Entries in this goal:</h2>
+	<% @goal.entries.each do |entry| %>
+		<div class="card mb-3">
+			<div class="card-body">
+				<h3 class="card-title"><a href="/entries/<%= entry.id %>"><%= entry.title %></a></h3>
+				<h6 class="card-subtitle text-muted"><%= entry.goal.name %></h6>
+			</div>
+			<div class="card-body">
+				<p class="card-text"><%= entry.content[0..300] %>
+					<% if entry.content.length > 300 %>
+						<a href="/entries/<%= entry.id %>">read more...</a>
+					<% end %>
+				</p>
+			</div>
+			<div class="card-footer text-muted">
+				<%= entry.created_at.strftime("%A, %B %d, %Y") %>
+			</div>
+		</div>
+	<% end %>
 <% end %>
