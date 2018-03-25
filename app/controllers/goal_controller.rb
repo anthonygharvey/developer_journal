@@ -71,6 +71,9 @@ class GoalController < ApplicationController
 	delete '/goals/:goalid' do
 		goal = Goal.find(params[:goalid])
 		flash[:goal_deleted] = "#{goal.name} has been deleted."
+		goal.entries.each do |entry|
+			entry.delete
+		end
 		goal.delete
 		redirect to "/goals"
 	end
