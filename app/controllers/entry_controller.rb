@@ -11,6 +11,7 @@ class EntryController < ApplicationController
 	post '/entries' do
 		@entry = current_user.entries.build(params)
 		if @entry.save
+			@entry.goal.progress += 1
 			flash[:new_entry] = "#{@entry.title} saved!"
 			redirect to "/entries/#{@entry.id}"
 		else
@@ -34,7 +35,7 @@ class EntryController < ApplicationController
 			erb :'/entries/entries'
 		end
 	end
-	
+
 	get '/entries/:entryid' do
 		@entry = Entry.find(params[:entryid])
 		erb :'/entries/show'
@@ -68,6 +69,7 @@ class EntryController < ApplicationController
 	delete '/entries/:entryid' do
 		entry = current_user.entries.find_by(params[:entryid])
 		flash[:delete_entry] = "#{entry.title} has been deleted"
+		entry.goal.progress -= 1
 		entry.delete
 		redirect to "/entries"
 	end

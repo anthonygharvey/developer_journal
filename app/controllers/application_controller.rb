@@ -54,6 +54,8 @@ class ApplicationController < Sinatra::Base
       Entry.find_by_id(entry_id) != nil
     end
 
+    # def update_goal_progress
+
   end
   #----------------------------------------------------------
 
