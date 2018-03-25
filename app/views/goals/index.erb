@@ -1,0 +1,20 @@
+<% @user.goals.each do |goal| %>
+	<div class="card mb-3">
+			<h3 class="card-header"><a href="/goals/<%= goal.id %>"><%= goal.name %></h3></a>
+			<div class="card-body">
+				<h5 class="card-title">Date Created: <%= goal.start_date.strftime("%A, %B %d, %Y") %></h5>			
+				<h5 class="card-title">Target Date: <%= goal.end_date.strftime("%A, %B %d, %Y") %></h5>			
+				<h5 class="card-title">Languages included: <%= goal.languages %></h5>
+			</div>
+
+			<div class="progress" id="progress-box">
+				<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+			</div>
+
+			<div class="card-body">
+				<button type="button" class="btn btn-warning" onclick="window.location.href='/goals/<%= goal.id %>/edit'">Edit</button>
+				
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_entry">Delete</button>
+			</div>
+	</div>
+<% end %>

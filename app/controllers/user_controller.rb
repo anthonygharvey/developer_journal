@@ -42,20 +42,6 @@ class UserController < ApplicationController
 			redirect to "/signup"
 		end
 	end
-
-	get '/entries' do
-		@user = User.find_by(username: params[:username])
-		@current_user = current_user
-		if !logged_in?
-			redirect to "/login"
-		else
-			erb :'/entries/entries'
-		end
-	end
-
-	get '/:userid/entries' do
-
-	end
 	#---------------------------------------------------------
 
 

@@ -28,6 +28,11 @@ class GoalController < ApplicationController
 
 
 	#==================== SHOW ==============================
+	get '/goals' do
+		@user = current_user
+		erb :'/goals/index'
+	end
+
 	get '/goals/:goalid' do
 		@goal = Goal.find(params[:goalid])
 		erb :'/goals/show'
