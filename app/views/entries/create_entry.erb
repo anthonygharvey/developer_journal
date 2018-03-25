@@ -18,22 +18,36 @@
 
 <form action='/entries' method='POST'>
 	<label for="title">Entry Title:</label>
-	<input type="text" name="title" id="title" class="form-control" placeholder="Entry Title">
+	<input type="text" name="entry[title]" id="title" class="form-control" placeholder="Entry Title">
 	<br>
 
-	<label for="goal">Goal:</label>
-	<select name="goal_id" id="goal" class="custom-select">
-		<option name="goal" value=""></option>
-		<% current_user.goals.all.each do |goal| %>
-			<option name="goal" value="<%= goal.id %>"><%= goal.name %></option>
-		<% end %>
-	</select>
+	<% if current_user.goals.empty? %>
+	<label for="goal">Goal Name:</label>
+	<input type="text" name="goal[name]" id="goal" class="form-control" placeholder="Goal Name" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_name] %><% end %>">
+	<br>
+
+	<label for="days">Number of Days:</label>
+	<input type="text" name="goal[duration_in_days]" id="days" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_days] %><% end %>">
+	<br>
+
+	<label for="laguages">Programming Languages:</label>
+	<input type="text" name="goal[languages]" id="languages" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_languages] %><% end %>">
+	<% else %>
+		<label for="goal">Goal:</label>
+		<select name="goal_id" id="goal" class="custom-select">
+			<option name="goal" value=""></option>
+			<% current_user.goals.all.each do |goal| %>
+				<option name="goal" value="<%= goal.id %>"><%= goal.name %></option>
+			<% end %>
+		</select>
+	<% end %>
+	
 	<br>
 	<br>
 
 	<div class="form-group">
 		<label for="summernote">What did you learn today?</label>
-		<textarea name="content" class="form-control" id="summernote">
+		<textarea name="entry[content]" class="form-control" id="summernote">
 			<% if !!flash[:entry_error] %>
 				<%= flash[:unsaved_content] %>
 			<% end %>
