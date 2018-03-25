@@ -54,7 +54,13 @@ class ApplicationController < Sinatra::Base
       Entry.find_by_id(entry_id) != nil
     end
 
-    # def update_goal_progress
+    def new_goal
+      goal = current_user.goals.build(params[:new_goal])
+      goal.start_date = Date.today
+			goal.end_date = goal.start_date + goal.duration_in_days.days
+      goal.progress = 0
+      goal
+    end
 
   end
   #----------------------------------------------------------

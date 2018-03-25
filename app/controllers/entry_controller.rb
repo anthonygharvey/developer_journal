@@ -9,18 +9,14 @@ class EntryController < ApplicationController
 	end
 
 	post '/entries' do
-		# binding.pry
-		if !params[:goal].empty?
-			goal = current_user.goals.build(params[:goal])
-			binding.pry
-			goal.start_date = Date.today
-			goal.end_date = goal.start_date + goal.duration_in_days.days
-			goal.progress = 0
+		if params[:new_goal]
 			@entry = Entry.new(params[:entry])
-			@entry.goal = goal
+			@entry.goal = new_goal
+		else
+			@entry = current_user.entries.build(params[:entry])
 		end
 		if @entry.save
-			@entry.goal.progress = 1
+			@entry.goal.progress += 1
 			flash[:new_entry] = "#{@entry.title} saved!"
 			redirect to "/entries/#{@entry.id}"
 		else
