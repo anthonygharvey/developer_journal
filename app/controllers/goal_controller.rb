@@ -28,6 +28,7 @@ class GoalController < ApplicationController
 	#==================== SHOW ==============================
 	get '/goals' do
 		@user = current_user
+		binding.pry
 		erb :'/goals/index'
 	end
 
