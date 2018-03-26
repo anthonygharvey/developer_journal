@@ -22,16 +22,16 @@
 	<br>
 
 	<% if current_user.goals.empty? %>
-	<label for="goal">Goal Name:</label>
-	<input type="text" name="new_goal[name]" id="goal" class="form-control" placeholder="Goal Name" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_name] %><% end %>">
-	<br>
+		<label for="goal">Goal Name:</label>
+		<input type="text" name="new_goal[name]" id="goal" class="form-control" placeholder="Goal Name" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_name] %><% end %>">
+		<br>
 
-	<label for="days">Number of Days:</label>
-	<input type="text" name="new_goal[duration_in_days]" id="days" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_days] %><% end %>">
-	<br>
+		<label for="days">Number of Days:</label>
+		<input type="text" name="new_goal[duration_in_days]" id="days" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_days] %><% end %>">
+		<br>
 
-	<label for="laguages">Programming Languages:</label>
-	<input type="text" name="new_goal[languages]" id="languages" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_languages] %><% end %>">
+		<label for="laguages">Programming Languages:</label>
+		<input type="text" name="new_goal[languages]" id="languages" class="form-control" value="<% if !!flash[:goal_error]%><%= flash[:unsaved_languages] %><% end %>">
 	<% else %>
 		<label for="goal">Goal:</label>
 		<select name="entry[goal_id]" id="goal" class="custom-select">

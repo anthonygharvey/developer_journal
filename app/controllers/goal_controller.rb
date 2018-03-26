@@ -10,7 +10,7 @@ class GoalController < ApplicationController
 	end
 
 	post '/goals' do
-		@goal = new_goal
+		@goal = new_goal(params[:goal])
 		if @goal.save
 			flash[:new_goal] = "#{@goal.name} was saved!"
 			redirect to "/goals/#{@goal.id}"

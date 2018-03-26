@@ -11,7 +11,7 @@ class EntryController < ApplicationController
 	post '/entries' do
 		if params[:new_goal]
 			@entry = Entry.new(params[:entry])
-			@entry.goal = new_goal
+			@entry.goal = new_goal(params[:new_goal])
 		else
 			@entry = current_user.entries.build(params[:entry])
 		end
