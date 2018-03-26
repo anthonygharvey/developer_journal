@@ -62,6 +62,11 @@ class ApplicationController < Sinatra::Base
       goal
     end
 
+    def update_goal_progress(goal)
+      goal.progress = goal.entries.collect{|entry| entry.created_at.to_date}.uniq.count
+      goal.save
+    end
+
   end
   #----------------------------------------------------------
 

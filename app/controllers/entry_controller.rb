@@ -15,8 +15,9 @@ class EntryController < ApplicationController
 		else
 			@entry = current_user.entries.build(params[:entry])
 		end
+		
 		if @entry.save
-			@entry.goal.progress += 1
+			update_goal_progress(@entry.goal)
 			flash[:new_entry] = "#{@entry.title} saved!"
 			redirect to "/entries/#{@entry.id}"
 		else
@@ -74,8 +75,9 @@ class EntryController < ApplicationController
 	delete '/entries/:entryid' do
 		entry = current_user.entries.find_by(params[:entryid])
 		flash[:delete_entry] = "#{entry.title} has been deleted"
-		entry.goal.progress -= 1
+		goal = entry.goal
 		entry.delete
+		update_goal_progress(goal)
 		redirect to "/entries"
 	end
 	#--------------------------------------------------------
