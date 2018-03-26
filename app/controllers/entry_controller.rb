@@ -73,7 +73,7 @@ class EntryController < ApplicationController
 
 	#==================== DELETE ============================
 	delete '/entries/:entryid' do
-		entry = current_user.entries.find_by(params[:entryid])
+		entry = current_user.entries.find(params[:entryid])
 		flash[:delete_entry] = "#{entry.title} has been deleted"
 		goal = entry.goal
 		entry.delete

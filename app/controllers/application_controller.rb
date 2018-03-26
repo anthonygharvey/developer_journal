@@ -62,10 +62,13 @@ class ApplicationController < Sinatra::Base
       goal
     end
 
-    def update_goal_progress(goal)
-      unique_entries = goal.entries.collect{|entry| entry.created_at.to_date}.uniq.count
-      goal.progress = (unique_entries.to_f / goal.duration_in_days)*100
-      goal.save
+    def update_goal_progress(goals)
+      # binding.pry
+      current_user.goals.each do |goal|
+        unique_entries = goal.entries.collect{|entry| entry.created_at.to_date}.uniq.count
+        goal.progress = (unique_entries.to_f / goal.duration_in_days)*100
+        goal.save
+      end
     end
 
   end
