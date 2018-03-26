@@ -33,6 +33,7 @@ class GoalController < ApplicationController
 
 	get '/goals/:goalid' do
 		@goal = Goal.find(params[:goalid])
+		update_goal_progress(@goal)
 		erb :'/goals/show'
 		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
 	end
