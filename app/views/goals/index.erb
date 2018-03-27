@@ -1,3 +1,14 @@
+<% if @user.goals.empty? %>
+	<div class="jumbotron">
+			<h2 class="display-3">Hello, <%= @user.username %>!</h2>
+			<p class="lead">It looks like you do not have any goals yet.  Don't worry, you can create your first goal by clicking the <span class="text-success">New Goal</span> button above or the <span class="text-primary">Get Started</span> button below.</p>
+			<hr class="my-4">
+			<p>Programming is a skill best acquired by practice and example rather than from books. - Alan Turing</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="/goals/new" role="button">Get Started</a>
+			</p>
+		</div>
+<% end %>
 <% @user.goals.each do |goal| %>
 	<div class="card mb-3">
 			<h3 class="card-header"><a href="/goals/<%= goal.id %>"><%= goal.name %></h3></a>

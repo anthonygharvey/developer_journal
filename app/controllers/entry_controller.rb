@@ -17,7 +17,7 @@ class EntryController < ApplicationController
 		end
 		
 		if @entry.save
-			update_goal_progress(@entry.goal)
+			update_goal_progress
 			flash[:new_entry] = "#{@entry.title} saved!"
 			redirect to "/entries/#{@entry.id}"
 		else
