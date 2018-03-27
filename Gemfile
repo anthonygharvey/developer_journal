@@ -12,10 +12,15 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash', '~> 0.3.0'
+gem 'pg'
 
 group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
+
+group :development do
+  gem 'sqlite3'  
 end
