@@ -30,15 +30,18 @@
         <li class="nav-item <% if request.path_info.include?("entries") %><%= 'active' %><% end %>">
           <a class="nav-link" href="/entries">Entries</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signup">Signup</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link <% if request.path_info.include?("login") %><%= 'active' %><% end %>" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <% if request.path_info.include?("signup") %><%= 'active' %><% end %>" href="/signup">Signup</a>
+          </li>
+        <% end %>
       </ul>
       <% if logged_in? %>
         <button type="button" class="btn btn-success" onclick="window.location.href='/goals/new'"> New Goal </button>
