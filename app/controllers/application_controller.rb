@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
   #==================== INDEX ===============================
   get '/' do
     if logged_in?
-      erb :'/entries/entries'
+      redirect to "/goals"
     else
       erb :'index'
     end
@@ -62,7 +62,7 @@ class ApplicationController < Sinatra::Base
       goal
     end
 
-    def update_goal_progress(goals)
+    def update_goal_progress
       current_user.goals.each do |goal|
         unique_entries = goal.entries.collect{|entry| entry.created_at.to_date}.uniq.count
         goal.progress = (unique_entries.to_f / goal.duration_in_days)*100

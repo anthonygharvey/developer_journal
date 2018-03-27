@@ -28,12 +28,13 @@ class GoalController < ApplicationController
 	#==================== SHOW ==============================
 	get '/goals' do
 		@user = current_user
+		update_goal_progress
 		erb :'/goals/index'
 	end
 
 	get '/goals/:goalid' do
 		@goal = Goal.find(params[:goalid])
-		update_goal_progress(@goal)
+		update_goal_progress
 		erb :'/goals/show'
 		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
 	end
@@ -43,6 +44,7 @@ class GoalController < ApplicationController
 	#==================== EDIT ==============================
 	get '/goals/:goalid/edit' do
 		@goal = Goal.find(params[:goalid])
+		update_goal_progress
 		erb :'/goals/edit_goal'
 	end
 
@@ -50,8 +52,9 @@ class GoalController < ApplicationController
 		@goal = current_user.goals.find(params[:goalid])
 		@goal.start_date = Date.today
 		@goal.end_date = @goal.start_date + @goal.duration_in_days.days
-		@goal.progress = 0
+		# @goal.progress = 0
 		if @goal.update(params[:goal])
+			update_goal_progress
 			flash[:goal_updated] = "#{@goal.name} was updated!"
 			redirect to "/goals/#{@goal.id}"
 		else

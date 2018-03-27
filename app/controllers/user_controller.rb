@@ -2,7 +2,7 @@ class UserController < ApplicationController
 	#==================== SIGNUP ==============================
 	get '/signup' do
 		if logged_in?
-			redirect to "/entries"
+			redirect to "/goals"
 		else
 			erb :'/users/create_user'
 		end
@@ -13,7 +13,7 @@ class UserController < ApplicationController
 		if @user.save
 			session[:user_id] = @user.id
 			flash[:signup] = "You've successfully signed up, #{@user.first_name}!"
-			redirect to "/entries"
+			redirect to "/goals"
 		else
 			flash[:signup_error] = @user.errors.full_messages
 			redirect to "/signup"
@@ -25,7 +25,7 @@ class UserController < ApplicationController
 	#==================== LOGIN ===============================
 	get '/login' do
 		if logged_in?
-			redirect to "/entries"
+			redirect to "/goals"
 		else
 			erb :'/users/login'
 		end
@@ -37,7 +37,7 @@ class UserController < ApplicationController
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			flash[:login] = "Successfully logged in!"
-			redirect to "/entries"
+			redirect to "/goals"
 		else
 			redirect to "/signup"
 		end
