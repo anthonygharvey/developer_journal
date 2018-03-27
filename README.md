@@ -1,7 +1,6 @@
 ![alt text](https://forthebadge.com/images/badges/made-with-ruby.svg "Made With Ruby")
 
-# Developer Journal
-## A place to set goals and keep track of your journey as a developer
+# Developer Journal - An app to set goals and keep track of your journey as a developer
 
 ## Description
 This app was built as a [Flatiron School](https://flatironschool.com/) project and is meant to help developers set goals and document their daily progress.  Users can set goals and specify the languages to focus on as well as the number of days to commit (pun intended 😀 ).  Once a goal has been created, users can create entires to document their progress towards that goal.  
