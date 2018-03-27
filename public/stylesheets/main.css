@@ -9,7 +9,8 @@
 footer.branding {
   height: 50px;
   color: #fff;
-  background-color: #1481b1;
+  background-color: #127ba3;
+  border-top: 4px solid #137099;
 }
 
 footer small {
