@@ -34,26 +34,6 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
-    def valid_signup?
-      !params.any?{|i| i[1].empty?} && !User.find_by_username(params[:username]) && !User.find_by_email(params[:email])
-    end
-
-    def valid_entry?
-      !params[:name].empty? && !params[:content].empty? && (!params[:goal_ids].empty? || !params[:new_goal].empty?)
-    end
-
-    def valid_goal?
-      !(params[:goal] || params[:new_goal]).empty?
-    end
-
-    def goal_exists?(goal_id)
-      Goal.find_by_id(goal_id) != nil
-    end
-
-    def entry_exists?(entry_id)
-      Entry.find_by_id(entry_id) != nil
-    end
-
     def new_goal(params)
       goal = current_user.goals.build(params)
       goal.start_date = Date.today
