@@ -10,7 +10,7 @@ A goal in the app is both a representation of the user's objective as well as a 
 For example: A user could create a goal of `Learn Bootstrap` with a timeframe of `10 days`.  If the user created 3 entries on the first day, the total progress would be 10% (1 out of 10 days).  If the user created 1 entry on the second day, the total progress would be 20%.
 
 ## Installation
-Clone this repository and execute `bundle install`.  Next run `rake db:migrate` to create the database then `rake db:seed` to add sample users, goals and entries to the database (disclaimer: I am a huge The Walking Dead fan and the sample data are based on the show.  There are no spoilers, just a nod to an awesome show!).  Run `shotgun` and navigate to spin-up a local server and navigate to `localhost:9393` to preview the app.
+Clone this repository and execute `bundle install`.  Run `shotgun` and navigate to spin-up a local server and navigate to `localhost:9393` to preview the app.  I added sample users (below) along with goals and entries to the database for you to get started (disclaimer: I am a huge The Walking Dead fan and the sample data are based on the show.  There are no spoilers, just a nod to an awesome show!).
 
 |Username		|Password|
 |-----------|--------|
@@ -19,6 +19,8 @@ Clone this repository and execute `bundle install`.  Next run `rake db:migrate` 
 |Daryl			|password|
 |Michonne		|password|
 |Morgan			|password|
+
+You can also add new users by signing up.
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/anthonygharvey/developer_news_cli_app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.

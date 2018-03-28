@@ -7,6 +7,9 @@
 
 /* -- Footer --- */
 footer.branding {
+  position: sticky;
+  bottom: 0;
+  left: 0;
   height: 50px;
   color: #fff;
   background-color: #127ba3;
