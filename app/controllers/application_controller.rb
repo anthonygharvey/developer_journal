@@ -36,10 +36,6 @@ class ApplicationController < Sinatra::Base
 
     def new_goal(params)
       goal = current_user.goals.build(params)
-      goal.start_date = Date.today
-			goal.end_date = goal.start_date + goal.duration_in_days.days
-      goal.progress = 0
-      goal
     end
 
     def update_goal_progress
