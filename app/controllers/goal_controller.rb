@@ -14,7 +14,8 @@ class GoalController < ApplicationController
 		if @goal.save
 			@goal.start_date = Date.today
 			@goal.end_date = @goal.start_date + @goal.duration_in_days.days
-      @goal.progress = 0
+			@goal.progress = 0
+			@goal.save
 			flash[:new_goal] = "#{@goal.name} was saved!"
 			redirect to "/goals/#{@goal.id}"
 		else
