@@ -77,7 +77,7 @@ class EntryController < ApplicationController
 		flash[:delete_entry] = "#{entry.title} has been deleted"
 		goal = entry.goal
 		entry.delete
-		update_goal_progress(goal)
+		update_goal_progress
 		redirect to "/entries"
 	end
 	#--------------------------------------------------------
