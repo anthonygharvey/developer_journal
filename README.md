@@ -34,6 +34,7 @@ shotgun
 ``` 
 and navigate to spin-up a local server and navigate to `localhost:9393` to preview the app.
 
+<<<<<<< HEAD
 |Username		|Password|
 |-----------|--------|
 |Rick				|password|
@@ -44,6 +45,8 @@ and navigate to spin-up a local server and navigate to `localhost:9393` to previ
 
 You can also add new users by signing up.
 
+=======
+>>>>>>> parent of 1009572... Add seed.rb username and passwords to README.md
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/anthonygharvey/developer_news_cli_app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
