@@ -33,7 +33,7 @@ class UserController < ApplicationController
 
 	post '/login' do
 		user = User.find_by(username: params[:username])
-
+		
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			flash[:login] = "Successfully logged in!"
@@ -42,11 +42,6 @@ class UserController < ApplicationController
 			redirect to "/signup"
 		end
 	end
-	#---------------------------------------------------------
-
-
-	#==================== USER SHOW PAGE =====================
-
 	#---------------------------------------------------------
 
 
