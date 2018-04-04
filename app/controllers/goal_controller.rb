@@ -37,7 +37,7 @@ class GoalController < ApplicationController
 	end
 
 	get '/goals/:goalid' do
-		@goal = Goal.find(params[:goalid])
+		@goal = current_user.goals.find(params[:goalid])
 		update_goal_progress
 		erb :'/goals/show'
 		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
@@ -47,7 +47,7 @@ class GoalController < ApplicationController
 
 	#==================== EDIT ==============================
 	get '/goals/:goalid/edit' do
-		@goal = Goal.find(params[:goalid])
+		@goal = current_user.goals.find(params[:goalid])
 		update_goal_progress
 		erb :'/goals/edit_goal'
 	end
@@ -74,7 +74,7 @@ class GoalController < ApplicationController
 
 	#==================== DELETE ============================
 	delete '/goals/:goalid' do
-		goal = Goal.find(params[:goalid])
+		goal = current_user.goals.find(params[:goalid])
 		flash[:goal_deleted] = "#{goal.name} has been deleted."
 		goal.entries.each do |entry|
 			entry.delete

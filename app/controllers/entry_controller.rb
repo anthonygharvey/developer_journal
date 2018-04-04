@@ -43,7 +43,7 @@ class EntryController < ApplicationController
 	end
 
 	get '/entries/:entryid' do
-		@entry = Entry.find(params[:entryid])
+		@entry = current_user.entries.find(params[:entryid])
 		erb :'/entries/show'
 	end
 	#--------------------------------------------------------
@@ -51,18 +51,18 @@ class EntryController < ApplicationController
 
 	#==================== EDIT ==============================
 	get '/entries/:entryid/edit' do
-		@entry = Entry.find(params[:entryid])
+		@entry = current_user.entries.find(params[:entryid])
 		erb :'/entries/edit_entry'
 	end
 
 	patch '/entries/:entryid' do
 		if !(params[:entry][:goal_id] == "")
-			entry = Entry.find(params[:entryid])
+			entry = current_user.entries.find(params[:entryid])
 			entry.update(params[:entry])
 			flash[:edit_success] = "#{entry.title} Updated!"
 			redirect to "/entries/#{params[:entryid]}"
 		else
-			@entry = Entry.find(params[:entryid])
+			@entry = current_user.entries.find(params[:entryid])
 			@entry.update(params[:entry])
 			flash[:edit_error] = @entry.errors.full_messages
 			redirect to "/entries/#{params[:entryid]}/edit"
