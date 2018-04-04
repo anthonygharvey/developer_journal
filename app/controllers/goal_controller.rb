@@ -11,7 +11,7 @@ class GoalController < ApplicationController
 
 	post '/goals' do
 		@goal = new_goal(params[:goal])
-		if @goal.save
+		if @goal.valid?
 			@goal.start_date = Date.today
 			@goal.end_date = @goal.start_date + @goal.duration_in_days.days
 			@goal.progress = 0
@@ -36,8 +36,8 @@ class GoalController < ApplicationController
 		erb :'/goals/index'
 	end
 
-	get '/goals/:goalid' do
-		@goal = current_user.goals.find(params[:goalid])
+	get '/goals/:id' do
+		@goal = current_user.goals.find(params[:id])
 		update_goal_progress
 		erb :'/goals/show'
 		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
@@ -46,14 +46,14 @@ class GoalController < ApplicationController
 
 
 	#==================== EDIT ==============================
-	get '/goals/:goalid/edit' do
-		@goal = current_user.goals.find(params[:goalid])
+	get '/goals/:id/edit' do
+		@goal = current_user.goals.find(params[:id])
 		update_goal_progress
 		erb :'/goals/edit_goal'
 	end
 
-	patch '/goals/:goalid' do
-		@goal = current_user.goals.find(params[:goalid])
+	patch '/goals/:id' do
+		@goal = current_user.goals.find(params[:id])
 		@goal.start_date = Date.today
 		@goal.end_date = @goal.start_date + @goal.duration_in_days.days
 		# @goal.progress = 0
@@ -73,8 +73,8 @@ class GoalController < ApplicationController
 
 
 	#==================== DELETE ============================
-	delete '/goals/:goalid' do
-		goal = current_user.goals.find(params[:goalid])
+	delete '/goals/:id' do
+		goal = current_user.goals.find(params[:id])
 		flash[:goal_deleted] = "#{goal.name} has been deleted."
 		goal.entries.each do |entry|
 			entry.delete
