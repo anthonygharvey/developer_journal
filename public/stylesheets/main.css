@@ -13,15 +13,18 @@ body {
 footer.branding {
   bottom: 0;
   left: 0;
-  height: 60px;
   color: #fff;
   background-color: #127ba3;
   border-top: 4px solid #137099;
   padding-left: 10px;
 }
 
+.fixed-bottom, .push {
+  height: 60px;;
+}
+
 .icon {
-padding: 5px;
+padding: 0 5px;
 }
 
 footer a#email {
