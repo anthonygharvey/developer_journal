@@ -38,7 +38,7 @@ class GoalController < ApplicationController
 
 	get '/goals/:id' do
 		if current_user.goals.find_by(id: params[:id]) != nil
-			@goal = current_user.goals.find_by(params[:id])
+			@goal = current_user.goals.find_by(id: params[:id])
 			update_goal_progress
 			erb :'/goals/show'
 		else

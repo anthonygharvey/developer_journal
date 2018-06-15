@@ -44,7 +44,7 @@ class EntryController < ApplicationController
 
 	get '/entries/:entryid' do
 		if current_user.entries.find_by(id: params[:entryid]) != nil
-			@entry = current_user.entries.find(params[:entryid])
+			@entry = current_user.entries.find_by(id: params[:entryid])
 			erb :'/entries/show'
 		else
 			@user = current_user
