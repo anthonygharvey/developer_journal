@@ -11,6 +11,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash', '~> 0.3.0'
+ruby '2.4.4'
 
 group :test do
   gem 'rspec'
