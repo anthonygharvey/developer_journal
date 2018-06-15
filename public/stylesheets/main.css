@@ -13,10 +13,20 @@ body {
 footer.branding {
   bottom: 0;
   left: 0;
-  height: 50px;
+  height: 60px;
   color: #fff;
   background-color: #127ba3;
   border-top: 4px solid #137099;
+  padding-left: 10px;
+}
+
+.icon {
+padding: 5px;
+}
+
+footer a#email {
+  color: #fff;
+  text-decoration: underline
 }
 
 footer small {
