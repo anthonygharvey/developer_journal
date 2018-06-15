@@ -43,8 +43,14 @@ class EntryController < ApplicationController
 	end
 
 	get '/entries/:entryid' do
-		@entry = current_user.entries.find(params[:entryid])
-		erb :'/entries/show'
+		if current_user.entries.find_by(id: params[:entryid]) != nil
+			@entry = current_user.entries.find(params[:entryid])
+			erb :'/entries/show'
+		else
+			@user = current_user
+			flash[:no_entry_error] = "An entry with an id of #{params[:entryid]} does not exist for #{@current_user.first_name}."
+			redirect to '/entries'
+		end
 	end
 	#--------------------------------------------------------
 

@@ -1,3 +1,10 @@
+<% !!if flash[:no_goal_error] %>
+	<div class="alert alert-dismissible alert-warning">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<%= flash[:no_goal_error] %>
+	</div>
+<% end %>
+
 <% if @user.goals.empty? %>
 	<div class="jumbotron">
 			<h2 class="display-3">Hello, <%= @user.username %>!</h2>

@@ -37,10 +37,15 @@ class GoalController < ApplicationController
 	end
 
 	get '/goals/:id' do
-		@goal = current_user.goals.find(params[:id])
-		update_goal_progress
-		erb :'/goals/show'
-		# TODO: Create error message if a goal id doesn't exist.  Redirect back to /goals
+		if current_user.goals.find_by(id: params[:id]) != nil
+			@goal = current_user.goals.find_by(params[:id])
+			update_goal_progress
+			erb :'/goals/show'
+		else
+			@user = current_user
+			flash[:no_goal_error] = "A goal with an id of #{params[:id]} does not exist for #{@current_user.first_name}."
+			redirect to '/goals'
+		end
 	end
 	#--------------------------------------------------------
 
