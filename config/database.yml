@@ -6,4 +6,4 @@ test:
   database: database.db
 production:
   adapter: postgresql
-  database: my_production_database
+  database: sch_database mydb
