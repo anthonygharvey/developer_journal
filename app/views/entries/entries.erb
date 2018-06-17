@@ -1,4 +1,4 @@
-<h2>Welcome, <%= current_user.first_name %></h2>
+<h2>All Entries:</h2>
 <% if !!flash[:login] %>
   <div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -22,18 +22,25 @@
 	</div>
 <% end %>
 
-
-<% current_user.entries.each do |entry| %>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h3 class="card-title"><a href="/entries/<%= entry.id %>"><%= entry.title %></a></h3>
-      <h6 class="card-subtitle text-muted"><a href="/goals/<%= entry.goal.id %>"><%= entry.goal.name %></a></h6>
-    </div>
-    <div class="card-body">
-      <%= entry.content %>
-    </div>
-    <div class="card-footer text-muted">
-      <%= entry.convert_to_date %>
-    </div>
-  </div>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Snippet</th>
+      <th scope="col">Goal</th>
+      <th scope="col">Date Created</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% current_user.entries.each do |entry| %>
+        <tr>
+          <th scope="row">
+            <a href="/entries/<%= entry.id %>"><%= entry.title %></a>
+          </th>
+          <td> <%= entry.snippet %></td>
+          <td><a href="/goals/<%= entry.goal.id %>"><%= entry.goal.name %></a></td>
+          <td><%= entry.created_at.strftime("%A, %B %d, %Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table> 
