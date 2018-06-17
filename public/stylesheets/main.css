@@ -9,6 +9,12 @@ body {
   font-size: 1rem;
 }
 
+/* -- About Page --- */
+.about > p {
+  font-size: 1.25em;
+  padding-bottom: 0.5em;
+}
+
 /* -- Footer --- */
 footer.branding {
   bottom: 0;

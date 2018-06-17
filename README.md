@@ -5,7 +5,7 @@
 ## Description
 This app was built as a [Flatiron School](https://flatironschool.com/) project and is meant to help developers set goals and document their daily progress.  Users can set goals and specify the languages to focus on as well as the number of days to commit (pun intended 😀 ).  Once a goal has been created, users can create entires to document their progress towards that goal.  
 
-A goal in the app is both a representation of the user's objective as well as a collection of entries documenting the user's progess to achieving their objective.  Users may create as many goals and entries as they like; however, goal progress is calculated based on the nubmer of days with entries.  
+A goal in the app is both a representation of the user's objective as well as a collection of entries documenting the user's progess to achieving their objective.  Users may create as many goals and entries as they like; however, goal progress is calculated based on the number of days with entries.  
 
 For example: A user could create a goal of `Learn Bootstrap` with a timeframe of `10 days`.  If the user created 3 entries on the first day, the total progress would be 10% (1 out of 10 days).  If the user created 1 entry on the second day, the total progress would be 20%.
 

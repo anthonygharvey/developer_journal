@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   #----------------------------------------------------------
 
 
-  #==================== INDEX ===============================
+  #==================== INDEX, ABOUT & 404 ===================
   get '/' do
     if logged_in?
       redirect to "/goals"
@@ -21,11 +21,16 @@ class ApplicationController < Sinatra::Base
       redirect to "/login"
     end
   end
-  #----------------------------------------------------------
   not_found do
     status 404
     erb :not_found
   end
+
+  get '/about' do
+    erb :'/about/about'
+  end
+
+  #----------------------------------------------------------
 
 
   #==================== HELPERS =============================
