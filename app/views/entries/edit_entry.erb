@@ -17,7 +17,9 @@
 	<select name="entry[goal_id]" id="goal" class="custom-select">
 		<option name="goal" value=""></option>
 		<% current_user.goals.all.each do |goal| %>
-			<option name="goal" value="<%= goal.id %>" selected="<%= @entry.goal.id %>"><%= goal.name %></option>
+			<option name="goal" value="<%= goal.id %>" <% if @entry.goal.id == goal.id %>selected='selected'<% end %>>
+				<%= goal.name %>
+			</option>
 		<% end %>
 	</select>
 	<br>
