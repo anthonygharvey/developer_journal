@@ -11,6 +11,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'sinatra-flash', '~> 0.3.0'
+gem 'rack', '>= 2.0.6'
 gem 'sanitize'
 ruby '2.3.3'
 
