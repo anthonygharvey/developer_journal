@@ -13,6 +13,7 @@ gem 'tux'
 gem 'sinatra-flash', '~> 0.3.0'
 gem 'rack', '>= 2.0.6'
 gem 'sanitize'
+gem "nokogiri", ">= 1.8.5"
 ruby '2.3.3'
 
 group :test do
