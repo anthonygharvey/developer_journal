@@ -40,6 +40,8 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
+      racc (~> 1.4)
     pg (1.4.6)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -92,6 +94,7 @@ GEM
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     sqlite3 (1.6.1-x86_64-darwin)
+    sqlite3 (1.6.1-x86_64-linux)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -109,6 +112,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   activerecord (~> 7.0, >= 7.0.4.3)
